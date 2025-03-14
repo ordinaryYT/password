@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Protected Page</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+      animation: slideIn 1s ease-out;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="password"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      color: #FF6347;
+      font-size: 18px;
+      margin-top: 20px;
+      display: none;
+      animation: shake 0.5s ease-in-out;
+    }
+
+    .success-message {
+      color: #28a745;
+      font-size: 18px;
+      margin-top: 20px;
+      display: none;
+      animation: fadeOut 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-10px);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+      75% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Enter Password</h1>
+    <input type="password" id="password" placeholder="Enter password here">
+    <br>
+    <button class="button" onclick="checkPassword()">Submit</button>
+    <p class="error-message" id="errorMessage">Incorrect password, please try again!</p>
+    <p class="success-message" id="successMessage">Redirecting...</p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      const correctPassword = "yourPassword"; // Replace with your desired password
+      const errorMessage = document.getElementById("errorMessage");
+      const successMessage = document.getElementById("successMessage");
+
+      // Hide error and success messages initially
+      errorMessage.style.display = "none";
+      successMessage.style.display = "none";
+
+      if (password === correctPassword) {
+        // Show the success message with fade-out animation before redirecting
+        successMessage.style.display = "block";
+        successMessage.style.animation = "fadeOut 2s ease-out";
+        
+        // Redirect after 2 seconds to let the fade-out animation complete
+        setTimeout(function() {
+          window.location.href = "https://www.example.com"; // Replace with the URL you want to redirect to
+        }, 2000);
+      } else {
+        // Show the error message with shake animation
+        errorMessage.style.display = "block";
+        errorMessage.style.animation = "shake 0.5s ease-in-out";
+      }
+    }
+  </script>
+  
+</body>
+</html>
