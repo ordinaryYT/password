@@ -146,7 +146,7 @@
   <script>
     function checkPassword() {
       const password = document.getElementById("password").value;
-      const correctPassword = "yourPassword"; // Replace with your desired password
+      const correctPassword = "secure123"; // Change this to your actual password
       const errorMessage = document.getElementById("errorMessage");
       const successMessage = document.getElementById("successMessage");
 
@@ -158,10 +158,10 @@
         // Show the success message with fade-out animation before redirecting
         successMessage.style.display = "block";
         successMessage.style.animation = "fadeOut 2s ease-out";
-        
+
         // Redirect after 2 seconds to let the fade-out animation complete
         setTimeout(function() {
-          window.location.href = "https://www.example.com"; // Replace with the URL you want to redirect to
+          window.location.href = "https://ordinarycomloading.vercel.app/"; // Change this URL if needed
         }, 2000);
       } else {
         // Show the error message with shake animation
@@ -170,6 +170,6 @@
       }
     }
   </script>
-  
+
 </body>
 </html>
